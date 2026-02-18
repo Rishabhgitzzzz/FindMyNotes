@@ -8,7 +8,7 @@ const authRoutes = require("./Routes/auth");
 const noteRoutes = require("./Routes/notes");
 
 const app = express();
-const PORT = 6969;
+const PORT = process.env.PORT || 6969;
 
 dotenv.config();
 app.use(cors());
@@ -17,7 +17,7 @@ app.use(express.json());
 
 
 try {
-    mongoose.connect(process.env.MONGO_URL);
+    mongoose.connect(process.env.MONGO_URI);
     console.log("Connection Successfull");
 } catch (error) {
     console.log(error);
